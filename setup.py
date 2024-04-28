@@ -5,14 +5,14 @@ with open("README.md", "r") as file:
 
 
 setuptools.setup(
-    name="lessbrew",
+    name="brewless",
     version="0.0.1",
     author="Moein Kareshk",
     author_email="mkareshk@outlook.com",
     description="Brew TL;DR Tutorials",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/mkareshk/lessbrew",
+    url="https://github.com/mkareshk/brewless",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

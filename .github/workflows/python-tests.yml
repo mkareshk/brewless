@@ -1,4 +1,4 @@
-name: lessbrew-python-tests
+name: brewless-python-tests
 
 on:
   push:
