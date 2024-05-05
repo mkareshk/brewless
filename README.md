@@ -1,5 +1,9 @@
 # brewless
 
+![Build Status](https://github.com/mkareshk/brewless/actions/workflows/python-tests.yml/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Python Version](https://img.shields.io/badge/python-3.10-blue.svg)
+
 brewless is a Python library designed to facilitate the running of local large language models (LLMs) and generate topic-specific content efficiently. It offers tools to start an LLM server locally and to generate educational content in Markdown format.
 
 ## Installation
