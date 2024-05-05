@@ -1,9 +1,7 @@
 import argparse
 
-from openai import OpenAI
-
-from brewless.llm import LocalLLM
-from brewless.prompts import PROMPT_TEXT_FOR_TOPIC
+from brewless.generation.tutorial import TutorialGenerator
+from brewless.llm import LLM, LocalLLM
 
 
 def run_local_llm(model, api_command, dtype):
@@ -13,31 +11,15 @@ def run_local_llm(model, api_command, dtype):
 
 def generate():
 
-    base_url = "http://localhost:8000/v1"
-    model = "meta-llama/Meta-Llama-3-8B-Instruct"
+    llm = LLM()
 
-    messages = [
-        {"role": "system", "content": "You are a professor in computer science."},
-        {
-            "role": "user",
-            "content": PROMPT_TEXT_FOR_TOPIC.format(
-                TOPIC_FILE_FORMAT="markdown",
-                TOPIC_NAME="Different optimization algorithms to train neural networks",
-            ),
-        },
-    ]
-
-    client = OpenAI(base_url=base_url, api_key="EMPTY")
-
-    response = client.chat.completions.create(
-        model=model,
-        messages=messages,
+    tutorial_generation = TutorialGenerator(
+        llm,
+        "Information Theory for Machine learning",
+        10,
+        1000,
     )
-
-    if response.choices:
-
-        with open("output.md", "wt") as file:
-            file.write(str(response.choices[0].message.content))
+    tutorial_generation.generate()
 
 
 def main():
@@ -81,7 +63,7 @@ def main():
         default="float16",
         help="The dtype to use in vllm",
     )
-    parser_generate = subparsers.add_parser("generate", help="Generate the text")
+    subparsers.add_parser("generate", help="Generate the text")
 
     args = parser.parse_args()
 

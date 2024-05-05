@@ -19,7 +19,10 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    install_requires=["openai", "vllm"],
-    extras_require={"dev": ["pre-commit", "pytest", "pytest-runner", "pytest-cov"]},
+    install_requires=["openai", "mkdocs-material", "sphinx-rtd-theme"],
+    extras_require={
+        "dev": ["pre-commit", "pytest", "pytest-runner", "pytest-cov"],
+        "local_hosting": ["vllm"],
+    },
     python_requires=">=3.10",
 )
